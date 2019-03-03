@@ -10,3 +10,4 @@ Confirmation will be displayed on the LCD
 System will turn on the motor for a duration corresponds to the current floor and desired floor
 Motor direction will be determined by the direction from current floor to desired floor
 Motor speed may be controlled based on the travel distance, while comfort stop is always maintained
+expected delivery date: may-2019
