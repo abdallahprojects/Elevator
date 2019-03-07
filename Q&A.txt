@@ -1,0 +1,5 @@
+Dear Aser,
+I expect you to answer my questions here by modifying this text file
+
+Q: What kind of motors do I have to do the project with?
+A:
