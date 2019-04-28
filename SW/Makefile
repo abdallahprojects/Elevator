@@ -27,11 +27,9 @@ CFLAGS += -std=gnu99
 
 #==== Programming Options (avrdude) ============================================
 
-AVRDUDE_PROGRAMMER = stk500v1
-AVRDUDE_PORT = /dev/ttyUSB0
-AVRDUDE_BAUD = 19200
+AVRDUDE_PROGRAMMER = usbasp
 
-AVRDUDE_FLAGS = -p $(MCU) -P $(AVRDUDE_PORT) -b $(AVRDUDE_BAUD) -c $(AVRDUDE_PROGRAMMER)
+AVRDUDE_FLAGS = -p $(MCU) -c $(AVRDUDE_PROGRAMMER) 
 
 
 
@@ -43,15 +41,14 @@ OBJCOPY = avr-objcopy
 AVRDUDE = avrdude
 REMOVE = rm -f
 
-all: build
+all:
 
-build:
-	$(CC) -c $(CFLAGS) ..\..\$(TARGET).c -o $(TARGET).o
+	$(CC) -c $(CFLAGS) $(TARGET).c -o $(TARGET).o
 	$(CC) $(CFLAGS) $(TARGET).o --output $(TARGET).elf
 	$(OBJCOPY) -O ihex -j .text -j .data $(TARGET).elf $(TARGET).hex
 
 program:
-	$(AVRDUDE) $(AVRDUDE_FLAGS) $(AVRDUDE_WRITE_FLASH) -U flash:w:$(TARGET).hex
+	$(AVRDUDE) $(AVRDUDE_FLAGS) -u -U flash:w:$(TARGET).hex
 
 clean:
 	$(REMOVE) "$(TARGET).hex"

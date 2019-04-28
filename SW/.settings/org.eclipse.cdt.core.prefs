@@ -1,0 +1,15 @@
+eclipse.preferences.version=1
+environment/project/de.innot.avreclipse.toolchain.winavr.base.1457363485/AVRDUDEOPTIONS/delimiter=;
+environment/project/de.innot.avreclipse.toolchain.winavr.base.1457363485/AVRDUDEOPTIONS/operation=replace
+environment/project/de.innot.avreclipse.toolchain.winavr.base.1457363485/AVRDUDEOPTIONS/value=-patmega32
+environment/project/de.innot.avreclipse.toolchain.winavr.base.1457363485/AVRDUDEPATH/delimiter=;
+environment/project/de.innot.avreclipse.toolchain.winavr.base.1457363485/AVRDUDEPATH/operation=replace
+environment/project/de.innot.avreclipse.toolchain.winavr.base.1457363485/AVRDUDEPATH/value=C\:\\WinAVR-20100110\\bin\\
+environment/project/de.innot.avreclipse.toolchain.winavr.base.1457363485/AVRTARGETFCPU/delimiter=;
+environment/project/de.innot.avreclipse.toolchain.winavr.base.1457363485/AVRTARGETFCPU/operation=replace
+environment/project/de.innot.avreclipse.toolchain.winavr.base.1457363485/AVRTARGETFCPU/value=8000000
+environment/project/de.innot.avreclipse.toolchain.winavr.base.1457363485/AVRTARGETMCU/delimiter=;
+environment/project/de.innot.avreclipse.toolchain.winavr.base.1457363485/AVRTARGETMCU/operation=replace
+environment/project/de.innot.avreclipse.toolchain.winavr.base.1457363485/AVRTARGETMCU/value=atmega32
+environment/project/de.innot.avreclipse.toolchain.winavr.base.1457363485/append=true
+environment/project/de.innot.avreclipse.toolchain.winavr.base.1457363485/appendContributed=true
