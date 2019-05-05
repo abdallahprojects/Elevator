@@ -7,7 +7,7 @@
 
 #include <avr/io.h> // Standard include for AVR
 #include <util/delay.h> // Delay functions
-
+#include "LCD.h"
 
 #define sbi(x, y) x |= _BV(y)                // set bit - using bitwise OR operator
 #define cbi(x, y) x &= ~(_BV(y))             // clear bit - using bitwise AND operator
@@ -18,6 +18,7 @@
 int main(void)
 {
     DDRB = 0xff;  // PORTB as OUTPUT
+	PrintNumber();
     PORTB = 0x00; // All pins of PORTB LOW
 
     while(1) // Infinite loop

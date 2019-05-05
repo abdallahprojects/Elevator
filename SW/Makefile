@@ -10,7 +10,7 @@ TARGET_NAME = Demo
 AVRDUDE_PROGRAMMER = usbasp
 
 AVRDUDE_FLAGS := -p $(MCU) -c $(AVRDUDE_PROGRAMMER) 
-
+SHELL = C:\cygwin64\bin\sh.exe
 #============== C files in thier respective Directories ========================
 SRCS = 	main/main.c \
 		LCD/LCD.c
@@ -97,6 +97,6 @@ clean:
 
 	
 %.d: %.c
-	$(CC) -M $(CFLAGS) $< > $@.temp
-	sed 's,\($*\)\.o[ :]*,\1.o $@ : ,g' < $@.temp > $@
-	rm -f $@.temp
+	@$(CC) -M $(CFLAGS) $< > $@.$$$$ ;\
+	sed 's,\($*\)\.o[ :]*,\1.o $@ : ,g' < $@.$$$$ > $@;\
+	rm -f $@.$$$$
