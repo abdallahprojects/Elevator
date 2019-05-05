@@ -2,18 +2,18 @@
 
 MCU = atmega32
 F_CPU = 8000000
-TARGET_NAME = Demo
+TARGET_NAME = LCD
 
 
 #==== Programming Options (avrdude) ============================================
 
 AVRDUDE_PROGRAMMER = usbasp
 
-AVRDUDE_FLAGS := -p $(MCU) -c $(AVRDUDE_PROGRAMMER) 
+AVRDUDE_FLAGS := -p $(MCU) -c $(AVRDUDE_PROGRAMMER)
 SHELL = C:\cygwin64\bin\sh.exe
 #============== C files in thier respective Directories ========================
 SRCS = 	main/main.c \
-		LCD/LCD.c
+		LCD/lcd1602A.c 
 
 #===============================================================================
 #==== Targets ==================================================================

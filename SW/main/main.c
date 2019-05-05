@@ -1,31 +1,63 @@
 /*
  * main.c
  *
- *  Created on: Apr 14, 2019
+ *  Created on: Apr 21, 2019
  *      Author: Abdallah Helal
  */
 
-#include <avr/io.h> // Standard include for AVR
-#include <util/delay.h> // Delay functions
-#include "LCD.h"
-
-#define sbi(x, y) x |= _BV(y)                // set bit - using bitwise OR operator
-#define cbi(x, y) x &= ~(_BV(y))             // clear bit - using bitwise AND operator
-#define tbi(x, y) x ^= _BV(y)                // toggle bit - using bitwise XOR operator
-#define is_high(x, y) (x & _BV(y) == _BV(y)) // check if the y'th bit of register 'x' is high
+#include <avr/io.h>
+#include <util/delay.h>
+#include "lcd1602A.h"
 
 
-int main(void)
-{
-    DDRB = 0xff;  // PORTB as OUTPUT
-	PrintNumber();
-    PORTB = 0x00; // All pins of PORTB LOW
+int main(void){
+	LCD board1_lcd = {(&PORTC),6,4,5,3,2,1,0};
+	unsigned char trigger = 0;
+// initialization sequence
+	DDRA = 0x00;
 
-    while(1) // Infinite loop
-    {
-        _delay_ms(500);  // Delay for 500 ms
-        tbi(PORTB, PB0); // the toggling takes place here
-    }
 
-    return 0;
+
+	LCD_Init(board1_lcd);
+	_delay_ms(80);
+	LCD_puts("Forward Direction !!");
+
+	/* initializing the motor */
+
+	DDRB=0xff;
+	DDRD=0xff;
+
+
+	PORTB |= (1<<PB0) | (1<<PB3);
+
+	PORTD &= ~(1<<PD7);
+
+
+	while(1){
+		if(PINA&(PA1))
+		{
+			trigger |= 1;
+		}
+		if(trigger == 1)
+		{
+			trigger = 3; // trigger = 11
+			LCD_Clear();
+			_delay_ms(80);
+			LCD_puts("Backward Direction !!");
+			PORTB &= ~(1<<PB0);
+			_delay_ms(4000);
+
+			PORTB |= (1<<PB0);
+
+			PORTB &= ~(1<<PB3);
+
+			PORTD |= (1<<PD7);
+
+		}
+
+
+	}
+
+
+	return 0;
 }
