@@ -84,6 +84,9 @@ $(TARGET).elf: $(OBJ)
 
 program:
 	$(AVRDUDE) $(AVRDUDE_FLAGS) -u -U flash:w:$(TARGET).hex
+	
+fuse:
+	$(AVRDUDE) $(AVRDUDE_FLAGS) -U lfuse:w:0xe4:m -U hfuse:w:0xd9:m
 
 clean:
 	$(REMOVE) $(TARGET).hex
