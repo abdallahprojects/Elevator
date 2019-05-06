@@ -53,6 +53,8 @@ int main(void){
 
 			PORTD |= (1<<PD7);
 
+
+
 		}
 
 
