@@ -13,39 +13,70 @@
 int main(void){
 	LCD board1_lcd = {(&PORTC),6,4,5,3,2,1,0};
 	unsigned char trigger = 0;
-// initialization sequence
+	// initialization sequence
 	DDRA = 0x00;
-
-
+	PORTA = 0xff;
 
 	LCD_Init(board1_lcd);
+
 	_delay_ms(80);
-	LCD_puts("Forward Direction !!");
+
+
 
 	/* initializing the motor */
 
 	DDRB=0xff;
 	DDRD=0xff;
 
+	LCD_puts("Elevator Project!");
 
-	PORTB |= (1<<PB0) | (1<<PB3);
-
-	PORTD &= ~(1<<PD7);
-
-
-	while(1){
-		if(PINA&(PA1))
+	while (trigger == 0 )
+	{
+		if(!(PINA&(PA1)))
 		{
-			trigger |= 1;
+			trigger = 1;
 		}
-		if(trigger == 1)
+	}
+	while(1)
+	{
+
+
+
+		while(trigger==1)
 		{
-			trigger = 3; // trigger = 11
+
 			LCD_Clear();
-			_delay_ms(80);
-			LCD_puts("Backward Direction !!");
+			_delay_ms(200);
+			LCD_puts("FW Direction !!");
+
 			PORTB &= ~(1<<PB0);
-			_delay_ms(4000);
+			_delay_ms(1000);
+			PORTB |= (1<<PB0);
+
+			PORTB |= (1<<PB3);
+
+			PORTD &= ~(1<<PD7);
+
+			while(trigger==1)
+			{
+				if(!(PINA&(PA1)))
+				{
+					trigger = 2;
+
+				}
+
+			}
+
+		}
+		while (trigger == 2 )
+		{
+
+			LCD_Clear();
+			_delay_ms(200);
+			LCD_puts("BW Direction !!");
+
+			PORTB &= ~(1<<PB0);
+			_delay_ms(1000);
 
 			PORTB |= (1<<PB0);
 
@@ -54,12 +85,26 @@ int main(void){
 			PORTD |= (1<<PD7);
 
 
+			while(trigger ==2)
+			{
 
+
+				if(!(PINA&(PA1)))
+				{
+					trigger = 1;
+
+
+				}
+			}
 		}
+
 
 
 	}
 
 
+
 	return 0;
 }
+
+
