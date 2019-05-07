@@ -8,7 +8,7 @@
 #include <avr/io.h>
 #include <util/delay.h>
 #include "lcd1602A.h"
-
+#include "motor.h"
 
 int main(void){
 	LCD board1_lcd = {(&PORTC),6,4,5,3,2,1,0};
@@ -25,8 +25,7 @@ int main(void){
 
 	/* initializing the motor */
 
-	DDRB=0xff;
-	DDRD=0xff;
+	InitMotor;
 
 	LCD_puts("Elevator Project!");
 
@@ -49,13 +48,11 @@ int main(void){
 			_delay_ms(200);
 			LCD_puts("FW Direction !!");
 
-			PORTB &= ~(1<<PB0);
+			MotorDisable;
+			MotorOff;
 			_delay_ms(1000);
-			PORTB |= (1<<PB0);
-
-			PORTB |= (1<<PB3);
-
-			PORTD &= ~(1<<PD7);
+			MotorEnable;
+			MotorOnLeft;
 
 			while(trigger==1)
 			{
@@ -75,14 +72,12 @@ int main(void){
 			_delay_ms(200);
 			LCD_puts("BW Direction !!");
 
-			PORTB &= ~(1<<PB0);
+			MotorDisable;
+			MotorOff;
 			_delay_ms(1000);
 
-			PORTB |= (1<<PB0);
-
-			PORTB &= ~(1<<PB3);
-
-			PORTD |= (1<<PD7);
+			MotorEnable;
+			MotorOnRight;
 
 
 			while(trigger ==2)
