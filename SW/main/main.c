@@ -9,25 +9,42 @@
 #include <util/delay.h>
 #include "lcd1602A.h"
 #include "motor.h"
-
+#include "main.h"
 int main(void){
+	state_t state;
 	LCD board1_lcd = {(&PORTC),6,4,5,3,2,1,0};
 	unsigned char trigger = 0;
-	// initialization sequence
-	DDRA = 0x00;
-	PORTA = 0xff;
-
-	LCD_Init(board1_lcd);
-
-	_delay_ms(80);
 
 
+	// main application
+	switch(state){
+	case Init:
+		// initialization sequence
+		DDRA = 0x00;
+		PORTA = 0xff;
 
-	/* initializing the motor */
+		LCD_Init(board1_lcd);
 
-	InitMotor;
+		_delay_ms(80);
 
-	LCD_puts("Elevator Project!");
+
+
+		/* initializing the motor */
+
+		InitMotor;
+
+		LCD_puts("Elevator Project!");
+		state = buttonCheck;
+		break;
+	case buttonCheck:
+		if()
+	default:
+		break;
+		//do nothing
+	}
+
+
+
 
 	while (trigger == 0 )
 	{
