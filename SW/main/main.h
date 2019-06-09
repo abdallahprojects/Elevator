@@ -8,11 +8,22 @@
 #ifndef MAIN_MAIN_H_
 #define MAIN_MAIN_H_
 
-	typedef	enum state_e{
-		Init,
-		buttonCheck,
-		abdallah
-	}state_t;
 
-#define LEFT_Button (!(PINA&(PA1))
+
+typedef	enum state_e{
+	Init,
+	InitToMain,
+	DebounceButtonState,
+	mainMenu
+}state_t;
+
+#define PressSelectToStart() do{\
+		LCD_Clear();\
+		_delay_ms(200);\
+		LCD_puts("Press Select to start !!");\
+		_delay_ms(2000);\
+		LCD_Clear();\
+		LCD_puts("Elevator Project!");\
+	}while(0)
+
 #endif /* MAIN_MAIN_H_ */
