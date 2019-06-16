@@ -13,9 +13,11 @@ AVRDUDE_FLAGS := -p $(MCU) -c $(AVRDUDE_PROGRAMMER)
 SHELL = C:\cygwin64\bin\sh.exe
 #============== C files in thier respective Directories ========================
 SRCS = 	main/main.c \
-		LCD/lcd1602A.c
+		LCD/lcd1602A.c \
+		BUT/button.c
 		
-INCS = MOT/
+INCS = MOT/ \
+	   Includes/
 
 #===============================================================================
 #==== Targets ==================================================================
@@ -35,6 +37,7 @@ INCLUDE += $(foreach dir, $(dir $(INCS)), -I$(dir))
 
 CFLAGS := -mmcu=$(MCU)
 CFLAGS += -DF_CPU=$(F_CPU)UL
+CFLAGS += -D__AVR_ATmega32__
 CFLAGS += -Os
 #CFLAGS += -mint8
 #CFLAGS += -mshort-calls

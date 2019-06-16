@@ -7,12 +7,15 @@
 
 #include <avr/io.h>
 #include <util/delay.h>
+#include "common.h"
 #include "lcd1602A.h"
 #include "motor.h"
 
+#include "button.h"
+
 int main(void){
 	LCD board1_lcd = {(&PORTC),6,4,5,3,2,1,0};
-	unsigned char trigger = 0;
+	uint8_t counter = 0;
 	// initialization sequence
 	DDRA = 0x00;
 	PORTA = 0xff;
@@ -20,7 +23,7 @@ int main(void){
 	LCD_Init(board1_lcd);
 
 	_delay_ms(80);
-
+	INIT_Buttons();
 
 
 	/* initializing the motor */
@@ -29,68 +32,17 @@ int main(void){
 
 	LCD_puts("Elevator Project!");
 
-	while (trigger == 0 )
-	{
-		if(!(PINA&(PA1)))
-		{
-			trigger = 1;
-		}
-	}
 	while(1)
 	{
-
-
-
-		while(trigger==1)
-		{
-
-			LCD_Clear();
-			_delay_ms(200);
-			LCD_puts("FW Direction !!");
-
-			MotorDisable;
-			MotorOff;
-			_delay_ms(1000);
-			MotorEnable;
-			MotorOnLeft;
-
-			while(trigger==1)
-			{
-				if(!(PINA&(PA1)))
-				{
-					trigger = 2;
-
+		if(DebouncedPressed(b_select)){
+			counter++;
+			if(counter < 10){
+					LCD_Clear();
+					_delay_ms(20);
+					LCD_putc(48+counter);
+				}else{
+					counter = 0;
 				}
-
-			}
-
-		}
-		while (trigger == 2 )
-		{
-
-			LCD_Clear();
-			_delay_ms(200);
-			LCD_puts("BW Direction !!");
-
-			MotorDisable;
-			MotorOff;
-			_delay_ms(1000);
-
-			MotorEnable;
-			MotorOnRight;
-
-
-			while(trigger ==2)
-			{
-
-
-				if(!(PINA&(PA1)))
-				{
-					trigger = 1;
-
-
-				}
-			}
 		}
 
 
