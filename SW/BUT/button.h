@@ -41,8 +41,8 @@ typedef struct button_s{
 
 
 
-unsigned char DebouncedPressed(buttonType_t BT);
-
+bool_t DebouncedPressed(buttonType_t BT);
+bool_t DebouncedUnpressed(buttonType_t BT);
 
 
 #endif /* BUT_BUTTON_H_ */

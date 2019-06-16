@@ -1,8 +1,8 @@
 /*
  * main.c
  *
- *  Created on: Apr 21, 2019
- *      Author: Abdallah Helal
+ *  Created on: Apr21, 2019
+ *      Author: AbdallahHelal
  */
 
 #include <avr/io.h>
@@ -16,6 +16,7 @@
 int main(void){
 	LCD board1_lcd = {(&PORTC),6,4,5,3,2,1,0};
 	uint8_t counter = 0;
+	bool_t flag = true;
 	// initialization sequence
 	DDRA = 0x00;
 	PORTA = 0xff;
@@ -34,17 +35,25 @@ int main(void){
 
 	while(1)
 	{
-		if(DebouncedPressed(b_select)){
+		if(DebouncedPressed(b_select)&&flag){
 			counter++;
+			flag = false;
 			if(counter < 10){
 					LCD_Clear();
 					_delay_ms(20);
 					LCD_putc(48+counter);
 				}else{
 					counter = 0;
+					LCD_Clear();
+					_delay_ms(20);
+					LCD_putc(48);
 				}
-		}
 
+		}
+		if(DebouncedUnpressed(b_select)&&!flag)
+		{
+			flag = true;
+		}
 
 
 	}
