@@ -9,7 +9,6 @@
 #define MAIN_MAIN_H_
 
 
-
 typedef	enum state_e{
 	Init,
 	mainMenu
