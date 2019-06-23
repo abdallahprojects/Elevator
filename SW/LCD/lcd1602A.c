@@ -11,7 +11,7 @@
 
 #define _XTAL_FREQ 8000000
 
-#include <stdbool.h>
+#include "common.h"
 #include <util/delay.h>
 #include <avr/io.h>
 #include "lcd1602A.h"
@@ -142,7 +142,10 @@ void LCD_puts ( char *a ) {
 void LCD_putrs ( const char *a ) {
 
     for ( int i = 0; a[i] != '\0'; ++i ) {
-        LCD_putc(a[i]);
+    	if(a[i] == '\n')
+    		LCD_Seond_Line();
+    	else
+    		LCD_putc(a[i]);
     }
 
 }

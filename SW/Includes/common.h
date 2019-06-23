@@ -9,9 +9,10 @@
 #define INCLUDES_COMMON_H_
 
 
-typedef uint8_t bool_t;
+typedef unsigned char bool_t;
 
 #define false 0
 #define true 1
+#define NULL (void*)(0)
 
 #endif /* INCLUDES_COMMON_H_ */

@@ -11,21 +11,22 @@
 #include "lcd1602A.h"
 #include "common.h"
 #include "motor.h"
+#include "Buttons.h"
 #include "main.h"
+#include "Menu.h"
 int main(void){
 	state_t state = Init;
-	button_t Button;
-	unsigned char Debounce_Button;
 	LCD board1_lcd = {(&PORTC),6,4,5,3,2,1,0};
-	unsigned char trigger = 0;
-
+	uint8_t buttonState[b_max]={0,0,0,0};
+	buttonType_t button;
 
 	// main application
+while(true){
 	switch(state){
 	/************************************************************
-	*   Initial state is to print the project name and wait     *
-	*   for the user to press the select button, otherwise      *
-	*   instructing him to do so.                               *
+	*   Initial state is to print the project name and move     *
+	*   to the main menu.									    *
+	*   						                                *
 	*************************************************************/
 	case Init:
 		// initialization sequence
@@ -35,112 +36,44 @@ int main(void){
 		/* initializing the motor */
 		InitMotor;
 		LCD_puts("Elevator Project!");
-		state = InitToMain;
+		state = mainMenu;
 		break;
 
-	/************************************************************
-	*   Initial state to main menu, pressing select is required *
-	*   to go from initial state to the main menu and the       *
-	*   system options.          			                    *
-	*************************************************************/
-	case InitToMain:
-		if(DebouncedPressed(b_select)){
-				state = mainMenu;
-		}
-		if(DebouncedPressed(b_left)||DebouncedPressed(b_right)||DebouncedPressed(b_back)){
-			PressSelectToStart();
-		}
-		break;
-
+		/************************************************************
+		*   Main state and main menu, pressing select is required   *
+		*   to start the main menu and the display the              *
+		*   system options.          			                    *
+		*************************************************************/
 	case mainMenu:
-		if(DebouncedPressed(b_left)){
+		// Check all buttons if they are pressed
+		for(button=b_select;button<=b_right;button++)
+			{
+				buttonState[button] |= (DebouncedPressed(button)&&buttonState[button]);
+				buttonState[button] |= DebouncedRelease(button)<<1;
+
+			}
+		if(buttonState[b_left]==PRESSED_DOWN){
 			mainMenu_scroll(b_left);
+			buttonState[b_left]=0;
 		}
-		if(DebouncedPressed(b_right)){
+		if(buttonState[b_right]==PRESSED_DOWN){
 			mainMenu_scroll(b_right);
-		}if(DebouncedPressed(b_back)){
-			state = Init;
+			buttonState[b_right]=PRESS_RESET;
+		}if(buttonState[b_back]==3){
+			mainMenu_scroll(b_back);
+			buttonState[b_back]=PRESS_RESET;
 		}
-		if(DebouncedPressed(b_select)){
-			state = option[selected];
+		if(buttonState[b_select]==PRESSED_DOWN){
+			mainMenu_scroll(b_select);
+			buttonState[b_select]=PRESS_RESET;
 		}
+		state = mainMenu;
+		break;
 	default:
 		break;
 		//do nothing
 	}
-
-
-
-
-	while (trigger == 0 )
-	{
-		if(!(PINA&(PA1)))
-		{
-			trigger = 1;
-		}
-	}
-	while(1)
-	{
-
-
-
-		while(trigger==1)
-		{
-
-			LCD_Clear();
-			_delay_ms(200);
-			LCD_puts("FW Direction !!");
-
-			MotorDisable;
-			MotorOff;
-			_delay_ms(1000);
-			MotorEnable;
-			MotorOnLeft;
-
-			while(trigger==1)
-			{
-				if(!(PINA&(PA1)))
-				{
-					trigger = 2;
-
-				}
-
-			}
-
-		}
-		while (trigger == 2 )
-		{
-
-			LCD_Clear();
-			_delay_ms(200);
-			LCD_puts("BW Direction !!");
-
-			MotorDisable;
-			MotorOff;
-			_delay_ms(1000);
-
-			MotorEnable;
-			MotorOnRight;
-
-
-			while(trigger ==2)
-			{
-
-
-				if(!(PINA&(PA1)))
-				{
-					trigger = 1;
-
-
-				}
-			}
-		}
-
-
-
-	}
-
-
+}
 
 	return 0;
 }

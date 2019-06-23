@@ -14,6 +14,9 @@
 #define EXTERN extern
 #endif
 
+#define PRESSED_DOWN 3
+#define PRESS_RESET 0
+
 typedef enum buttonType_e{
 	b_select,
 	b_back,
@@ -39,6 +42,7 @@ typedef struct button_s{
 
 
 
-bool_t DebouncedPressed(button_t *Button);
-EXTERN uint8_t button_map[b_max] = {PA0,PA6,PA4,PA5}
+bool_t DebouncedPressed(buttonType_t BT);
+bool_t DebouncedRelease(buttonType_t BT);
+extern uint8_t button_map[b_max];
 #endif /* BUTTONS_BUTTONS_H_ */
