@@ -118,7 +118,7 @@ class createSource:
 		f.close()
 		
 if __name__== "__main__":
-	Menu = menu("inputScript.txt")
-	createHeader("GenMenu",Menu)
-	createSource("GenMenu",Menu)
+	Menu = menu("Menu\inputScript.txt")
+	createHeader("Menu\GenMenu",Menu)
+	createSource("Menu\GenMenu",Menu)
 

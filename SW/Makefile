@@ -87,7 +87,7 @@ $(TARGET).elf: $(OBJ)
 Menu/menu.c: Menu/GenMenu.c
 
 Menu/GenMenu.c: Menu/inputScript.txt
-		python MenuGen.py
+		python Menu/MenuGen.py
 
 
 program: all
