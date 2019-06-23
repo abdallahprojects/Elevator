@@ -33,13 +33,20 @@ typedef struct {
 extern LCD lcd;
 
 // Macros that correspond to LCD commands
-#define LCD_Clear() LCD_Cmd(0x01)
+#define LCD_Clear()	\
+do{					\
+	LCD_Cmd(0x01);	\
+	_delay_ms(5);	\
+}while(0)
+
 #define LCD_Decrement_Cursor() LCD_Cmd(0x04)
 #define LCD_Increment_Cursor() LCD_Cmd(0x05)
 #define LCD_Shift_Display_Right() LCD_Cmd(0x06)
 #define LCD_Shift_Display_Left() LCD_Cmd(0x07)
 #define LCD_Shift_Right() LCD_Cmd(0x1C)
 #define LCD_Shift_Left() LCD_Cmd(0x18)
+#define LCD_Seond_Line() LCD_Cmd(0xC0)
+#define LCD_First_Line() LCD_Cmd(0x80)
 
 // Sets the LCD cursor position
 #define LCD_Set_Cursor( x, y )           \
@@ -76,7 +83,7 @@ do {                                     \
     }                                    \
                                          \
     LCD_Cmd(cmd);                        \
-} while ( false )
+} while ( 0 )
 
 // [Internal use only] Sends a command to the LCD
 #define LCD_Cmd( c )                     \

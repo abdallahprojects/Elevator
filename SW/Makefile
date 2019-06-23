@@ -14,10 +14,11 @@ SHELL = C:\cygwin64\bin\sh.exe
 #============== C files in thier respective Directories ========================
 SRCS = 	main/main.c \
 		LCD/lcd1602A.c \
-		BUT/button.c
+		Buttons/Buttons.c\
+		Menu/Menu.c
 		
 INCS = MOT/ \
-	   Includes/
+		Includes/
 
 #===============================================================================
 #==== Targets ==================================================================
@@ -63,9 +64,8 @@ SIZE := avr-size --format=avr --mcu=$(MCU)
 
 #to do all, there is a prerequisites the hex file, if the hex file doesn't exist, make will
 #look for a rule to build the hex file
-all:$(TARGET).hex
+all: $(TARGET).hex 
 	
-
 # Rule to build the hex file, requires the elf file to exist as a prerequisite, if the elf doesn't exit
 # look for a rule to build it
 %.hex: %.elf
@@ -83,12 +83,15 @@ $(TARGET).elf: $(OBJ)
 	@echo '**************  Building $< *****************************'
 	@$(CC) $(CFLAGS) -MD -c $< -o $@
 	@$(CC) $(CFLAGS) -S $< -o $*.s
-	
+
+# Rule for the python generated C file (GenMenu.c and GenMenu.h)
+Menu/menu.c: Menu/GenMenu.c
+
+Menu/GenMenu.c: Menu/inputScript.txt
+		python Menu/MenuGen.py
 
 
-
-
-program:
+program: all
 	$(AVRDUDE) $(AVRDUDE_FLAGS) -u -U flash:w:$(TARGET).hex
 	
 fuse:
@@ -99,6 +102,8 @@ clean:
 	$(REMOVE) $(TARGET).elf
 	$(REMOVE) $(OBJ) $(SRCS:.c=.s)
 	$(REMOVE) $(SRCS:.c=.d)
+#remove the generated files
+	$(REMOVE) Menu/GenMenu.*
 	
 #-include $(SRCS:.c=.d)
 -include $(subst .c,.d,$(SRCS))
