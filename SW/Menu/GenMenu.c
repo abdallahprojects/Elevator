@@ -34,7 +34,7 @@ void callBack5(void){
 // The following callback is for ("Motor Control ..") menu item 
 void callBack8(void){
 // ---------- Manual Code Start --------------------
-
+	MotorEnable;
 // ---------- Manual Code End   --------------------
 	currentMenuItem = &menuItems[9];
 
@@ -42,7 +42,7 @@ void callBack8(void){
 // The following callback is for ("Turn Left") menu item 
 void callBack9(void){
 // ---------- Manual Code Start --------------------
-
+	MotorOnLeft;
 // ---------- Manual Code End   --------------------
 	currentMenuItem = &menuItems[9];
 
@@ -50,7 +50,7 @@ void callBack9(void){
 // The following callback is for ("Turn Right") menu item 
 void callBack10(void){
 // ---------- Manual Code Start --------------------
-
+	MotorOnRight;
 // ---------- Manual Code End   --------------------
 	currentMenuItem = &menuItems[10];
 
@@ -58,7 +58,7 @@ void callBack10(void){
 // The following callback is for ("Turn OFF") menu item 
 void callBack11(void){
 // ---------- Manual Code Start --------------------
-
+	MotorOff;
 // ---------- Manual Code End   --------------------
 	currentMenuItem = &menuItems[11];
 
@@ -66,7 +66,7 @@ void callBack11(void){
 // The following callback is for ("Turn both ON") menu item 
 void callBack12(void){
 // ---------- Manual Code Start --------------------
-
+	MotorHold;
 // ---------- Manual Code End   --------------------
 	currentMenuItem = &menuItems[12];
 
