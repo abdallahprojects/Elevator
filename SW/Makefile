@@ -15,7 +15,8 @@ SHELL = C:\cygwin64\bin\sh.exe
 SRCS = 	main/main.c \
 		LCD/lcd1602A.c \
 		Buttons/Buttons.c\
-		Menu/Menu.c
+		Menu/Menu.c\
+		ADC/ADC.c
 		
 INCS = MOT/ \
 		Includes/

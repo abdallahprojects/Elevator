@@ -35,7 +35,7 @@ typedef struct button_s{
 
 #define Button_Pressed(PA) (!(PINA&(1<<button_map[PA])))
 
-#define INIT_Buttons() do{\
+#define BUT_init() do{\
 		DDRA &= ~((1<<PA0)|(1<<PA4)|(1<<PA5)|(1<<PA6)); \
 		PORTA |= (1<<PA0)|(1<<PA4)|(1<<PA5)|(1<<PA6); \
 	}while(0)

@@ -14,6 +14,7 @@
 #include "Buttons.h"
 #include "main.h"
 #include "Menu.h"
+#include "ADC.h"
 int main(void){
 	state_t state = Init;
 	LCD board1_lcd = {(&PORTC),6,4,5,3,2,1,0};
@@ -30,7 +31,8 @@ while(true){
 	*************************************************************/
 	case Init:
 		// initialization sequence
-		INIT_Buttons(); // init buttons
+		BUT_init(); // init buttons
+		ADC_init(); // init the current sensor ADC channel
 		LCD_Init(board1_lcd);
 		_delay_ms(80);
 		/* initializing the motor */

@@ -105,6 +105,8 @@ void LCD_puts ( char *a );
 // Prints a string on the LCD that is allocated on the program memory
 void LCD_putrs ( const char *a );
 
+void LCD_putNum(uint8_t number);
+
 // [Internal use only] Write a byte to the LCD
 void LCD_Write ( unsigned char c );
 

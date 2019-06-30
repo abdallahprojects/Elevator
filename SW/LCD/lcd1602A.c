@@ -13,6 +13,7 @@
 
 #include "common.h"
 #include <util/delay.h>
+#include <stdint.h>
 #include <avr/io.h>
 #include "lcd1602A.h"
 
@@ -148,4 +149,23 @@ void LCD_putrs ( const char *a ) {
     		LCD_putc(a[i]);
     }
 
+}
+
+void LCD_putNum(uint8_t number){
+	char str[4];
+	str[0] = '0';
+	str[1] = '.';
+	str[2] = '0';
+	str[3] = '\0';
+	if(number/10 < 10)
+		str[0] = 48+ number/10;
+	else
+		str[0] = '-';
+	////
+	if((number%10) < 10)
+		str[2] = 48+(number%10);
+	else
+		str[2] = '-';
+
+	LCD_putrs(str);
 }

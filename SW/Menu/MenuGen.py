@@ -114,7 +114,10 @@ class createSource:
 			if(item.actionListener):
 				f.write("// The following callback is for ("+item.text+") menu item \n")
 				f.write("void callBack"+str(item.id)+"(void){\n")
-				f.write("\tcurrentMenuItem = &menuItems["+str(item.firstChild.id)+"];\n}\n")
+				f.write("// ---------- Manual Code Start --------------------\n\n")
+				f.write("// ---------- Manual Code End   --------------------\n")
+				f.write("\tcurrentMenuItem = &menuItems["+str(item.firstChild.id)+"];\n")
+				f.write("\n}\n")
 		f.close()
 		
 if __name__== "__main__":
