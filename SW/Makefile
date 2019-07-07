@@ -104,7 +104,7 @@ clean:
 	$(REMOVE) $(OBJ) $(SRCS:.c=.s)
 	$(REMOVE) $(SRCS:.c=.d)
 #remove the generated files
-	$(REMOVE) Menu/GenMenu.*
+#	$(REMOVE) Menu/GenMenu.*
 	
 #-include $(SRCS:.c=.d)
 -include $(subst .c,.d,$(SRCS))

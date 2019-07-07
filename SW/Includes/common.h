@@ -16,6 +16,7 @@ typedef unsigned char bool_t;
 
 #define false 0
 #define true 1
+#define MOTOR_CRNT_SENS_CHNL 3
 #define NULL (void*)(0)
 
 #endif /* INCLUDES_COMMON_H_ */
