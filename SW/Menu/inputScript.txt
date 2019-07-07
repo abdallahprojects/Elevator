@@ -11,7 +11,7 @@
 		["Turn Right"]
 		["Turn OFF"]
 		["Turn both ON"] 
-	["Read Voltage .."]
+	["Read Voltage .."] [NO]
 	["Read Current .."]
 	["Elevator .."]
 		["To Be defined \nlater!"] [NO]

@@ -16,6 +16,7 @@
 #include "GenMenu.h"  // generated list of the menu, do not modify manually
 
 static const menuItem_t *currentMenuItem = &menuItems[0];
+static const menuItem_t *prevMenuItem = NULL;
 
 void initMenu(void){
 
@@ -29,29 +30,38 @@ void mainMenu_scroll(buttonType_t direction){
 		currentMenuItem = currentMenuItem->next;
 	}else if(direction == b_select)
 	{
-		currentMenuItem->actionListener();
+		currentMenuItem = currentMenuItem->select;
 	}else if(direction == b_back)
 	{
 		currentMenuItem = currentMenuItem->parent;
 	}else{
 		//keep executing the current action
-		currentMenuItem->actionListener();
+		currentMenuItem->actionListener(CYCLIC);
 	}
-	processMenu();
 }
 
 void processMenu(void){
-	LCD_Clear();
-	_delay_ms(50);
-	LCD_putrs(currentMenuItem->string);
+
+	if ( currentMenuItem != prevMenuItem)
+		{
+			LCD_Clear();
+			_delay_ms(50);
+			LCD_putrs(currentMenuItem->string);
+			prevMenuItem = currentMenuItem;
+			currentMenuItem->actionListener(INIT);
+		}else{
+			currentMenuItem->actionListener(CYCLIC);
+		}
 }
 //generated C file
 #include "GenMenu.c"
 
-void stubCall(void){
-	LCD_Clear();
-	LCD_putrs("Press back\n to return!!");
-	_delay_ms(2000);
-	LCD_Clear();
-	LCD_putrs(currentMenuItem->string);
+void stubCall(uint8_t init){
+	if(init == true){
+		LCD_Clear();
+		LCD_putrs("Press back\n to return!!");
+		_delay_ms(2000);
+		LCD_Clear();
+		LCD_putrs(currentMenuItem->string);
+	}
 }

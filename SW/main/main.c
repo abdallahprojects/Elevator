@@ -69,6 +69,7 @@ while(true){
 			mainMenu_scroll(b_select);
 			buttonState[b_select]=PRESS_RESET;
 		}
+		processMenu();
 		state = mainMenu;
 		break;
 	default:

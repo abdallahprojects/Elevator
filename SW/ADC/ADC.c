@@ -10,7 +10,7 @@
 #include "ADC.h"
 
 void ADC_init(void){
-	ADMUX |= (1<<ADLAR);
+	//ADMUX |= (1<<ADLAR); // Left adjust
 	ADMUX &= ~((1<<REFS1)|(1<<REFS0));
 
 	ADMUX |= (1<<MUX0) | (1<<MUX1); // SET channel 3 for motor current sensor
@@ -24,18 +24,18 @@ void ADC_init(void){
 	ADCSRA |= (1<<ADEN); // enable ADC controller
 }
 
-adc_status_t ADC_read(uint8_t *ADC_H,uint8_t *ADC_L){
-	adc_status_t ret=NOK;
+int ADC_read(char channel){
+	int Ain,AinLow;
 
-	if(!(ADCSRA &&(1<<ADSC))){
-		// adc is ready
-		ADCSRA |= (1<<ADSC); // Starting new conv
-		while((ADCSRA&&(1<<ADSC)));  //wait for ADSC to be 0
-		*ADC_H = ADCH;
-		*ADC_L = ADCL;
-		ret = OK;
-	}else{ // adc is busy
-		ret = BUSY;
-	}
-	return ret;
+	ADMUX=ADMUX|(channel & 0x0f);	/* Set input channel to read */
+
+	ADCSRA |= (1<<ADSC);		/* Start conversion */
+	while((ADCSRA&(1<<ADIF))==0);	/* Monitor end of conversion interrupt */
+
+//	_delay_us(10);
+	AinLow = (int)ADCL;		/* Read lower byte*/
+	Ain = (int)ADCH*256;		/* Read higher 2 bits and
+					Multiply with weight */
+	Ain = Ain + AinLow;
+	return(Ain);			/* Return digital value*/
 }

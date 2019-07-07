@@ -24,7 +24,7 @@ typedef enum ADC_STAT{
 
 
 void ADC_init(void);
-adc_status_t ADC_read(uint8_t *ADC_H,uint8_t *ADC_L);
+int ADC_read(char channel);
 
 
 #endif /* ADC_ADC_H_ */

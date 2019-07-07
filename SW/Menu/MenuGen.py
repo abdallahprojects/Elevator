@@ -1,4 +1,5 @@
 import re
+from GetMenuCode import GetMenuCode
 class item:
 	def __init__(self,text,id=0):
 		self.text = text
@@ -78,11 +79,11 @@ class createHeader:
 	def __init__(self,fileName,Menu):
 		f= open(fileName+".h","w+")
 		f.write("// Call backs funtion prototypes:\n")
-		f.write("void stubCall(void);\n")
+		f.write("void stubCall(uint8_t init);\n")
 		for idx,item in Menu.items.items():
 			if(item.actionListener):
 				f.write("// The following callback is for ("+item.text+") menu item \n")
-				f.write("void callBack"+str(item.id)+"(void);\n")
+				f.write("void callBack"+str(item.id)+"(uint8_t init);\n")
 		f.write("// Defining the menu items structs in flash memory\n")
 		f.write( "const menuItem_t menuItems[] 	= {\n")
 		for idx,item in Menu.items.items():
@@ -99,6 +100,8 @@ class createHeader:
 			f.write( (9*'\t')+' &menuItems[' +str(item.nextItem.id) +"],"+"\n")
 			#Check for Prev
 			f.write( (9*'\t')+' &menuItems[' +str(item.prevItem.id) +"],"+"\n")
+			#Check for firstChild
+			f.write( (9*'\t')+' &menuItems[' +str(item.firstChild.id) +"]"+"\n")
 			if idx == (len(Menu.items)-1):
 				f.write( 9*'\t' +"}"+"\n")
 			else:
@@ -107,21 +110,27 @@ class createHeader:
 		f.close()
 
 class createSource:
-	def __init__(self,fileName,Menu):
+	def __init__(self,fileName,Menu,oldSource):
 		f= open(fileName+".c","w+")
 		f.write("// Call backs funtion implementation:\n")
 		for idx,item in Menu.items.items():
 			if(item.actionListener):
 				f.write("// The following callback is for ("+item.text+") menu item \n")
-				f.write("void callBack"+str(item.id)+"(void){\n")
-				f.write("// ---------- Manual Code Start --------------------\n\n")
+				f.write("void callBack"+str(item.id)+"(uint8_t init){\n")
+				f.write("// ---------- Manual Code Start --------------------\n")
+				if(oldSource.get(item.text,0)):
+					f.write(oldSource[item.text])
+				else:
+					f.write('\n')
 				f.write("// ---------- Manual Code End   --------------------\n")
-				f.write("\tcurrentMenuItem = &menuItems["+str(item.firstChild.id)+"];\n")
+				#f.write("\tcurrentMenuItem = &menuItems["+str(item.firstChild.id)+"];\n")
 				f.write("\n}\n")
 		f.close()
 		
 if __name__== "__main__":
 	Menu = menu("Menu\inputScript.txt")
+	Code = GetMenuCode('Menu\GenMenu.c')
 	createHeader("Menu\GenMenu",Menu)
-	createSource("Menu\GenMenu",Menu)
+	createSource("Menu\GenMenu",Menu,Code.oldSource)
+	print("Done !")
 
