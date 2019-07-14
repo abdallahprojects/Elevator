@@ -46,7 +46,7 @@ do{					\
 #define LCD_Shift_Right() LCD_Cmd(0x1C)
 #define LCD_Shift_Left() LCD_Cmd(0x18)
 #define LCD_Seond_Line() LCD_Cmd(0xC0)
-#define LCD_First_Line() LCD_Cmd(0x80)
+#define LCD_First_Line() LCD_Cmd(0x00)
 
 // Sets the LCD cursor position
 #define LCD_Set_Cursor( x, y )           \

@@ -52,9 +52,11 @@ void LCD_Out ( char c ) {
 
 }
 
+// Write into DDRAM (Data RAM) Instruction
 void LCD_Write ( unsigned char c ) {
 
-    *(lcd.PORT) &= ~(1 << lcd.RS); // => RS = 0
+    *(lcd.PORT) &= ~(1 << lcd.RS); // => RS = 0 Instruction
+    *(lcd.PORT) &= ~(1 << lcd.WR); // Write operation
     LCD_Out(c);
 
     *(lcd.PORT) |= 1 << lcd.EN;    // => E = 1
@@ -94,28 +96,40 @@ unsigned char LCD_Init ( LCD display ) {
     _delay_ms(80);
 
     // Send reset signal to the LCD
-    LCD_Write(0x03);
-    _delay_ms(20);
-    LCD_Write(0x03);
-    _delay_ms(64);
-    LCD_Write(0x03);
+    LCD_Write(0x03); //Function Reset, set to 8 bit initially according to datasheet
+    _delay_ms(1); // wait for > 37 us
 
-    // Specify the data lenght to 4 bits
-    LCD_Write(0x02);
 
-    // Set interface data length to 8 bits, number of display lines to 2 and font to 5x8 dots
-    LCD_Cmd(0x28);
+    // Set interface data length to 4 bits, number of display lines to 2 and font to 5x8 dots
+    LCD_Cmd(0x28); // 00101000
+
+    _delay_ms(1); // wait for >37 us
+
+    // Set interface data length to 4 bits, number of display lines to 2 and font to 5x8 dots
+    // Repeat because it's required by the Datasheet
+    LCD_Cmd(0x28); // 00101000
+
+    _delay_ms(1); // wait for >37 us
+
+    // Turn Cursor off - Display On - Blink off
+    LCD_Cmd(0x0C);
+    _delay_ms(1);
+
+    // Dispaly Clear
+    LCD_Cmd(0x01);
+    _delay_ms(1);
 
     // Set cursor to move from left to right
     LCD_Cmd(0x06);
 
-    LCD_Display(true, false, false); // Turn on display and set cursor off
+   // LCD_Display(true, false, false); // Turn on display and set cursor off
 
-    LCD_Clear();
+    //LCD_Clear();
     
     return true;
 }
 
+// Write Data to LCD
 void LCD_putc ( char c ) {
 
    *(lcd.PORT) |= 1 << lcd.RS;   // => RS = 1
@@ -172,4 +186,20 @@ void LCD_putNum(uint32_t number){
 		LCD_putc((char)((number % (uint32_t)(pow(10,i)+0.5))/((uint32_t)pow(10,i-1)))+48);
 	}
 	//LCD_putrs(str);
+}
+void SendLCD_DDRAM_ADD(uint8_t Address){
+	uint8_t command;
+	uint8_t code = 0;
+	code |= (1<<7); // this is the code to write in the DDRAM address space in the LCD
+	command = code | Address;
+	LCD_Cmd(command);
+}
+// the CGRAM address is only 5 bits, other bits will be ignored
+void SendLCD_CGRAM_ADD(uint8_t Address){
+	uint8_t command;
+	uint8_t code = 0;
+	Address &= ~(3<<6);
+	code |= (1<<6); // this is the code to write in the CGRAM address space in the LCD
+	command = code | Address;
+	LCD_Cmd(command);
 }
