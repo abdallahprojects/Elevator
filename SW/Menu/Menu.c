@@ -14,6 +14,7 @@
 #include "lcd1602A.h"
 #include "ADC.h"
 #include "GenMenu.h"  // generated list of the menu, do not modify manually
+#include "PWM.h"
 
 static const menuItem_t *currentMenuItem = &menuItems[0];
 static const menuItem_t *prevMenuItem = NULL;
