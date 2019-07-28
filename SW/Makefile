@@ -16,7 +16,8 @@ SRCS = 	main/main.c \
 		LCD/lcd1602A.c \
 		Buttons/Buttons.c\
 		Menu/Menu.c\
-		ADC/ADC.c
+		ADC/ADC.c\
+		PWM/PWM.c
 		
 INCS = MOT/ \
 		Includes/

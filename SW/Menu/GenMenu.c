@@ -27,10 +27,10 @@ void callBack5(uint8_t init){
 // ---------- Manual Code End   --------------------
 
 }
-// The following callback is for ("Motor Control ..") menu item 
+// The following callback is for ("Digital Motor\nControl ..") menu item 
 void callBack8(uint8_t init){
 // ---------- Manual Code Start --------------------
-	MotorEnable;
+
 // ---------- Manual Code End   --------------------
 
 }
@@ -125,19 +125,118 @@ void callBack12(uint8_t init){
 // ---------- Manual Code End   --------------------
 
 }
-// The following callback is for ("Read Voltage ..") menu item 
+// The following callback is for ("Speed Control ..") menu item 
 void callBack13(uint8_t init){
 // ---------- Manual Code Start --------------------
-if(init){
-	// initialization Code starts here
-}else{ // Cyclic code starts here
+
+// ---------- Manual Code End   --------------------
 
 }
+// The following callback is for ("Left ..") menu item 
+void callBack14(uint8_t init){
+// ---------- Manual Code Start --------------------
+	if(init){
+		// initialize the DDR pin
+		InitMotor;
+		MotorEnable;
+		MotorOff; // clear the other pin to set as GND
+		PWM_init(pwm_32ms);
+	}
+// ---------- Manual Code End   --------------------
+
+}
+// The following callback is for ("Left ..\n++++++++++") menu item 
+void callBack15(uint8_t init){
+// ---------- Manual Code Start --------------------
+	if(init){
+		PWM_setDutyCycle(100);
+	}
+// ---------- Manual Code End   --------------------
+
+}
+// The following callback is for ("Left ..\n+") menu item 
+void callBack16(uint8_t init){
+// ---------- Manual Code Start --------------------
+	if(init){
+		PWM_setDutyCycle(10);
+	}
+// ---------- Manual Code End   --------------------
+
+}
+// The following callback is for ("Left ..\n++") menu item 
+void callBack17(uint8_t init){
+// ---------- Manual Code Start --------------------
+	if(init){
+		PWM_setDutyCycle(20);
+	}
+// ---------- Manual Code End   --------------------
+
+}
+// The following callback is for ("Left ..\n+++") menu item 
+void callBack18(uint8_t init){
+// ---------- Manual Code Start --------------------
+	if(init){
+		PWM_setDutyCycle(30);
+	}
+// ---------- Manual Code End   --------------------
+
+}
+// The following callback is for ("Left ..\n++++") menu item 
+void callBack19(uint8_t init){
+// ---------- Manual Code Start --------------------
+	if(init){
+		PWM_setDutyCycle(40);
+	}
+// ---------- Manual Code End   --------------------
+
+}
+// The following callback is for ("Left ..\n+++++") menu item 
+void callBack20(uint8_t init){
+// ---------- Manual Code Start --------------------
+	if(init){
+		PWM_setDutyCycle(50);
+	}
+// ---------- Manual Code End   --------------------
+
+}
+// The following callback is for ("Left ..\n++++++") menu item 
+void callBack21(uint8_t init){
+// ---------- Manual Code Start --------------------
+	if(init){
+		PWM_setDutyCycle(60);
+	}
+// ---------- Manual Code End   --------------------
+
+}
+// The following callback is for ("Left ..\n+++++++") menu item 
+void callBack22(uint8_t init){
+// ---------- Manual Code Start --------------------
+	if(init){
+		PWM_setDutyCycle(70);
+	}
+// ---------- Manual Code End   --------------------
+
+}
+// The following callback is for ("Left ..\n++++++++") menu item 
+void callBack23(uint8_t init){
+// ---------- Manual Code Start --------------------
+	if(init){
+		PWM_setDutyCycle(80);
+	}
+// ---------- Manual Code End   --------------------
+
+}
+// The following callback is for ("Left ..\n+++++++++") menu item 
+void callBack24(uint8_t init){
+// ---------- Manual Code Start --------------------
+	if(init){
+		PWM_setDutyCycle(90);
+	}
 // ---------- Manual Code End   --------------------
 
 }
 // The following callback is for ("Read Current ..") menu item 
-void callBack14(uint8_t init){
+void callBack26(uint8_t init){
 // ---------- Manual Code Start --------------------
 	uint8_t i;
 	uint32_t sum = 0;
@@ -190,7 +289,7 @@ void callBack14(uint8_t init){
 
 }
 // The following callback is for ("Elevator ..") menu item 
-void callBack15(uint8_t init){
+void callBack27(uint8_t init){
 // ---------- Manual Code Start --------------------
 
 // ---------- Manual Code End   --------------------
