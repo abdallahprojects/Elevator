@@ -19,7 +19,10 @@ typedef enum PWM_Speed_E{
 	ext_pin0_rising
 }pwm_speed_t;
 
-void PWM_init(pwm_speed_t pwmSpeed);
-void PWM_setDutyCycle(uint8_t DutyCycle);
-
+void PWM_leftInit(pwm_speed_t pwmSpeed);
+void PWM_rightInit(pwm_speed_t pwmSpeed);
+void PWM_leftSetDutyCycle(uint8_t DutyCycle);
+void PWM_rightSetDutyCycle(uint8_t DutyCycle);
+void PWM_leftInitInvMode(pwm_speed_t pwmSpeed);
+void PWM_rightInitInvMode(pwm_speed_t pwmSpeed);
 #endif /* PWM_PWM_H_ */

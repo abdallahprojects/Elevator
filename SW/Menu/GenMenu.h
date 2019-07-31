@@ -42,10 +42,34 @@ void callBack22(uint8_t init);
 void callBack23(uint8_t init);
 // The following callback is for ("Left ..\n+++++++++") menu item 
 void callBack24(uint8_t init);
-// The following callback is for ("Read Current ..") menu item 
+// The following callback is for ("Right ..") menu item 
+void callBack25(uint8_t init);
+// The following callback is for ("Right ..\n+") menu item 
 void callBack26(uint8_t init);
-// The following callback is for ("Elevator ..") menu item 
+// The following callback is for ("Right ..\n++") menu item 
 void callBack27(uint8_t init);
+// The following callback is for ("Right ..\n+++") menu item 
+void callBack28(uint8_t init);
+// The following callback is for ("Right ..\n++++") menu item 
+void callBack29(uint8_t init);
+// The following callback is for ("Right ..\n+++++") menu item 
+void callBack30(uint8_t init);
+// The following callback is for ("Right ..\n++++++") menu item 
+void callBack31(uint8_t init);
+// The following callback is for ("Right ..\n+++++++") menu item 
+void callBack32(uint8_t init);
+// The following callback is for ("Right ..\n++++++++") menu item 
+void callBack33(uint8_t init);
+// The following callback is for ("Right ..\n+++++++++") menu item 
+void callBack34(uint8_t init);
+// The following callback is for ("Right ..\n++++++++++") menu item 
+void callBack35(uint8_t init);
+// The following callback is for ("Testing 50% dc\n in inv&non-inv modes") menu item 
+void callBack36(uint8_t init);
+// The following callback is for ("Read Current ..") menu item 
+void callBack38(uint8_t init);
+// The following callback is for ("Elevator ..") menu item 
+void callBack39(uint8_t init);
 // Defining the menu items structs in flash memory
 const menuItem_t menuItems[] 	= {
 									{
@@ -63,7 +87,7 @@ const menuItem_t menuItems[] 	= {
 									 &callBack1,
 									 &menuItems[0],
 									 &menuItems[8],
-									 &menuItems[27],
+									 &menuItems[39],
 									 &menuItems[2]
 									},
 									{
@@ -170,7 +194,7 @@ const menuItem_t menuItems[] 	= {
 	 	 	 	 	 	 	 	 	 "Speed Control ..",
 									 &callBack13,
 									 &menuItems[0],
-									 &menuItems[25],
+									 &menuItems[37],
 									 &menuItems[8],
 									 &menuItems[14]
 									},
@@ -179,8 +203,8 @@ const menuItem_t menuItems[] 	= {
 	 	 	 	 	 	 	 	 	 "Left ..",
 									 &callBack14,
 									 &menuItems[13],
-									 &menuItems[14],
-									 &menuItems[14],
+									 &menuItems[25],
+									 &menuItems[36],
 									 &menuItems[15]
 									},
 									{
@@ -274,39 +298,147 @@ const menuItem_t menuItems[] 	= {
 									 &menuItems[24]
 									},
 									{
-									 //  This is element number (25) calling -> 25
-	 	 	 	 	 	 	 	 	 "Read Voltage ..",
-									 &stubCall,
-									 &menuItems[0],
-									 &menuItems[26],
+									 //  This is element number (25) calling -> 26
+	 	 	 	 	 	 	 	 	 "Right ..",
+									 &callBack25,
 									 &menuItems[13],
-									 &menuItems[25]
-									},
-									{
-									 //  This is element number (26) calling -> 26
-	 	 	 	 	 	 	 	 	 "Read Current ..",
-									 &callBack26,
-									 &menuItems[0],
-									 &menuItems[27],
-									 &menuItems[25],
+									 &menuItems[36],
+									 &menuItems[14],
 									 &menuItems[26]
 									},
 									{
-									 //  This is element number (27) calling -> 28
-	 	 	 	 	 	 	 	 	 "Elevator ..",
+									 //  This is element number (26) calling -> 26
+	 	 	 	 	 	 	 	 	 "Right ..\n+",
+									 &callBack26,
+									 &menuItems[25],
+									 &menuItems[27],
+									 &menuItems[35],
+									 &menuItems[26]
+									},
+									{
+									 //  This is element number (27) calling -> 27
+	 	 	 	 	 	 	 	 	 "Right ..\n++",
 									 &callBack27,
-									 &menuItems[0],
-									 &menuItems[1],
+									 &menuItems[25],
+									 &menuItems[28],
 									 &menuItems[26],
-									 &menuItems[28]
+									 &menuItems[27]
 									},
 									{
 									 //  This is element number (28) calling -> 28
+	 	 	 	 	 	 	 	 	 "Right ..\n+++",
+									 &callBack28,
+									 &menuItems[25],
+									 &menuItems[29],
+									 &menuItems[27],
+									 &menuItems[28]
+									},
+									{
+									 //  This is element number (29) calling -> 29
+	 	 	 	 	 	 	 	 	 "Right ..\n++++",
+									 &callBack29,
+									 &menuItems[25],
+									 &menuItems[30],
+									 &menuItems[28],
+									 &menuItems[29]
+									},
+									{
+									 //  This is element number (30) calling -> 30
+	 	 	 	 	 	 	 	 	 "Right ..\n+++++",
+									 &callBack30,
+									 &menuItems[25],
+									 &menuItems[31],
+									 &menuItems[29],
+									 &menuItems[30]
+									},
+									{
+									 //  This is element number (31) calling -> 31
+	 	 	 	 	 	 	 	 	 "Right ..\n++++++",
+									 &callBack31,
+									 &menuItems[25],
+									 &menuItems[32],
+									 &menuItems[30],
+									 &menuItems[31]
+									},
+									{
+									 //  This is element number (32) calling -> 32
+	 	 	 	 	 	 	 	 	 "Right ..\n+++++++",
+									 &callBack32,
+									 &menuItems[25],
+									 &menuItems[33],
+									 &menuItems[31],
+									 &menuItems[32]
+									},
+									{
+									 //  This is element number (33) calling -> 33
+	 	 	 	 	 	 	 	 	 "Right ..\n++++++++",
+									 &callBack33,
+									 &menuItems[25],
+									 &menuItems[34],
+									 &menuItems[32],
+									 &menuItems[33]
+									},
+									{
+									 //  This is element number (34) calling -> 34
+	 	 	 	 	 	 	 	 	 "Right ..\n+++++++++",
+									 &callBack34,
+									 &menuItems[25],
+									 &menuItems[35],
+									 &menuItems[33],
+									 &menuItems[34]
+									},
+									{
+									 //  This is element number (35) calling -> 35
+	 	 	 	 	 	 	 	 	 "Right ..\n++++++++++",
+									 &callBack35,
+									 &menuItems[25],
+									 &menuItems[26],
+									 &menuItems[34],
+									 &menuItems[35]
+									},
+									{
+									 //  This is element number (36) calling -> 36
+	 	 	 	 	 	 	 	 	 "Testing 50% dc\n in inv&non-inv modes",
+									 &callBack36,
+									 &menuItems[13],
+									 &menuItems[14],
+									 &menuItems[25],
+									 &menuItems[36]
+									},
+									{
+									 //  This is element number (37) calling -> 37
+	 	 	 	 	 	 	 	 	 "Read Voltage ..",
+									 &stubCall,
+									 &menuItems[0],
+									 &menuItems[38],
+									 &menuItems[13],
+									 &menuItems[37]
+									},
+									{
+									 //  This is element number (38) calling -> 38
+	 	 	 	 	 	 	 	 	 "Read Current ..",
+									 &callBack38,
+									 &menuItems[0],
+									 &menuItems[39],
+									 &menuItems[37],
+									 &menuItems[38]
+									},
+									{
+									 //  This is element number (39) calling -> 40
+	 	 	 	 	 	 	 	 	 "Elevator ..",
+									 &callBack39,
+									 &menuItems[0],
+									 &menuItems[1],
+									 &menuItems[38],
+									 &menuItems[40]
+									},
+									{
+									 //  This is element number (40) calling -> 40
 	 	 	 	 	 	 	 	 	 "To Be defined \nlater!",
 									 &stubCall,
-									 &menuItems[27],
-									 &menuItems[28],
-									 &menuItems[28],
-									 &menuItems[28]
+									 &menuItems[39],
+									 &menuItems[40],
+									 &menuItems[40],
+									 &menuItems[40]
 									}
 								  };

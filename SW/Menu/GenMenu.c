@@ -140,8 +140,10 @@ void callBack14(uint8_t init){
 		InitMotor;
 		MotorEnable;
 		MotorOff; // clear the other pin to set as GND
-		PWM_init(pwm_32ms);
+		PWM_leftInit(pwm_32ms);
+		PWM_leftSetDutyCycle(0);
 	}
+
 // ---------- Manual Code End   --------------------
 
 }
@@ -149,7 +151,7 @@ void callBack14(uint8_t init){
 void callBack15(uint8_t init){
 // ---------- Manual Code Start --------------------
 	if(init){
-		PWM_setDutyCycle(100);
+		PWM_leftSetDutyCycle(100);
 	}
 // ---------- Manual Code End   --------------------
 
@@ -158,7 +160,7 @@ void callBack15(uint8_t init){
 void callBack16(uint8_t init){
 // ---------- Manual Code Start --------------------
 	if(init){
-		PWM_setDutyCycle(10);
+		PWM_leftSetDutyCycle(10);
 	}
 // ---------- Manual Code End   --------------------
 
@@ -167,7 +169,7 @@ void callBack16(uint8_t init){
 void callBack17(uint8_t init){
 // ---------- Manual Code Start --------------------
 	if(init){
-		PWM_setDutyCycle(20);
+		PWM_leftSetDutyCycle(20);
 	}
 // ---------- Manual Code End   --------------------
 
@@ -176,7 +178,7 @@ void callBack17(uint8_t init){
 void callBack18(uint8_t init){
 // ---------- Manual Code Start --------------------
 	if(init){
-		PWM_setDutyCycle(30);
+		PWM_leftSetDutyCycle(30);
 	}
 // ---------- Manual Code End   --------------------
 
@@ -185,7 +187,7 @@ void callBack18(uint8_t init){
 void callBack19(uint8_t init){
 // ---------- Manual Code Start --------------------
 	if(init){
-		PWM_setDutyCycle(40);
+		PWM_leftSetDutyCycle(40);
 	}
 // ---------- Manual Code End   --------------------
 
@@ -194,7 +196,7 @@ void callBack19(uint8_t init){
 void callBack20(uint8_t init){
 // ---------- Manual Code Start --------------------
 	if(init){
-		PWM_setDutyCycle(50);
+		PWM_leftSetDutyCycle(50);
 	}
 // ---------- Manual Code End   --------------------
 
@@ -203,7 +205,7 @@ void callBack20(uint8_t init){
 void callBack21(uint8_t init){
 // ---------- Manual Code Start --------------------
 	if(init){
-		PWM_setDutyCycle(60);
+		PWM_leftSetDutyCycle(60);
 	}
 // ---------- Manual Code End   --------------------
 
@@ -212,7 +214,7 @@ void callBack21(uint8_t init){
 void callBack22(uint8_t init){
 // ---------- Manual Code Start --------------------
 	if(init){
-		PWM_setDutyCycle(70);
+		PWM_leftSetDutyCycle(70);
 	}
 // ---------- Manual Code End   --------------------
 
@@ -221,7 +223,7 @@ void callBack22(uint8_t init){
 void callBack23(uint8_t init){
 // ---------- Manual Code Start --------------------
 	if(init){
-		PWM_setDutyCycle(80);
+		PWM_leftSetDutyCycle(80);
 	}
 // ---------- Manual Code End   --------------------
 
@@ -230,13 +232,116 @@ void callBack23(uint8_t init){
 void callBack24(uint8_t init){
 // ---------- Manual Code Start --------------------
 	if(init){
-		PWM_setDutyCycle(90);
+		PWM_leftSetDutyCycle(90);
 	}
 // ---------- Manual Code End   --------------------
 
 }
-// The following callback is for ("Read Current ..") menu item 
+// The following callback is for ("Right ..") menu item 
+void callBack25(uint8_t init){
+// ---------- Manual Code Start --------------------
+	if(init){
+		// initialize the DDR pin
+		InitMotor;
+		MotorEnable;
+		MotorOff; // clear the other pin to set as GND
+		PWM_rightInit(pwm_32ms);
+		PWM_rightSetDutyCycle(0);
+	}
+
+
+// ---------- Manual Code End   --------------------
+
+}
+// The following callback is for ("Right ..\n+") menu item 
 void callBack26(uint8_t init){
+// ---------- Manual Code Start --------------------
+	PWM_rightSetDutyCycle(10);
+// ---------- Manual Code End   --------------------
+
+}
+// The following callback is for ("Right ..\n++") menu item 
+void callBack27(uint8_t init){
+// ---------- Manual Code Start --------------------
+	PWM_rightSetDutyCycle(20);
+// ---------- Manual Code End   --------------------
+
+}
+// The following callback is for ("Right ..\n+++") menu item 
+void callBack28(uint8_t init){
+// ---------- Manual Code Start --------------------
+	PWM_rightSetDutyCycle(30);
+// ---------- Manual Code End   --------------------
+
+}
+// The following callback is for ("Right ..\n++++") menu item 
+void callBack29(uint8_t init){
+// ---------- Manual Code Start --------------------
+	PWM_rightSetDutyCycle(40);
+// ---------- Manual Code End   --------------------
+
+}
+// The following callback is for ("Right ..\n+++++") menu item 
+void callBack30(uint8_t init){
+// ---------- Manual Code Start --------------------
+	PWM_rightSetDutyCycle(50);
+// ---------- Manual Code End   --------------------
+
+}
+// The following callback is for ("Right ..\n++++++") menu item 
+void callBack31(uint8_t init){
+// ---------- Manual Code Start --------------------
+	PWM_rightSetDutyCycle(60);
+// ---------- Manual Code End   --------------------
+
+}
+// The following callback is for ("Right ..\n+++++++") menu item 
+void callBack32(uint8_t init){
+// ---------- Manual Code Start --------------------
+	PWM_rightSetDutyCycle(70);
+// ---------- Manual Code End   --------------------
+
+}
+// The following callback is for ("Right ..\n++++++++") menu item 
+void callBack33(uint8_t init){
+// ---------- Manual Code Start --------------------
+	PWM_rightSetDutyCycle(80);
+// ---------- Manual Code End   --------------------
+
+}
+// The following callback is for ("Right ..\n+++++++++") menu item 
+void callBack34(uint8_t init){
+// ---------- Manual Code Start --------------------
+	PWM_rightSetDutyCycle(90);
+// ---------- Manual Code End   --------------------
+
+}
+// The following callback is for ("Right ..\n++++++++++") menu item 
+void callBack35(uint8_t init){
+// ---------- Manual Code Start --------------------
+	PWM_rightSetDutyCycle(100);
+// ---------- Manual Code End   --------------------
+
+}
+// The following callback is for ("Testing 50% dc\n in inv&non-inv modes") menu item 
+void callBack36(uint8_t init){
+// ---------- Manual Code Start --------------------
+	if(init){
+		// initialize the DDR pin
+		InitMotor;
+		MotorEnable;
+		MotorOff; // clear the other pin to set as GND
+		PWM_leftInit(pwm_32ms);
+		PWM_leftSetDutyCycle(50);
+		PWM_leftInitInvMode(pwm_32ms);
+		PWM_leftSetDutyCycle(50);
+	}
+
+// ---------- Manual Code End   --------------------
+
+}
+// The following callback is for ("Read Current ..") menu item 
+void callBack38(uint8_t init){
 // ---------- Manual Code Start --------------------
 	uint8_t i;
 	uint32_t sum = 0;
@@ -289,7 +394,7 @@ void callBack26(uint8_t init){
 
 }
 // The following callback is for ("Elevator ..") menu item 
-void callBack27(uint8_t init){
+void callBack39(uint8_t init){
 // ---------- Manual Code Start --------------------
 
 // ---------- Manual Code End   --------------------
