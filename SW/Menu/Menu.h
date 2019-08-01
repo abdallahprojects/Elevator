@@ -11,7 +11,7 @@
 #define INIT 1
 #define CYCLIC 0
 // ADC value iterations
-#define RES 20
+#define RES 200
 
 
 typedef struct menuItem_s{

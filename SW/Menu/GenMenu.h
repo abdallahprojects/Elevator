@@ -66,10 +66,12 @@ void callBack34(uint8_t init);
 void callBack35(uint8_t init);
 // The following callback is for ("Testing 50% dc\n in inv&non-inv modes") menu item 
 void callBack36(uint8_t init);
-// The following callback is for ("Read Current ..") menu item 
+// The following callback is for ("Current Monitor ..") menu item 
 void callBack38(uint8_t init);
-// The following callback is for ("Elevator ..") menu item 
+// The following callback is for ("Read Current ..") menu item 
 void callBack39(uint8_t init);
+// The following callback is for ("Elevator ..") menu item 
+void callBack40(uint8_t init);
 // Defining the menu items structs in flash memory
 const menuItem_t menuItems[] 	= {
 									{
@@ -87,7 +89,7 @@ const menuItem_t menuItems[] 	= {
 									 &callBack1,
 									 &menuItems[0],
 									 &menuItems[8],
-									 &menuItems[39],
+									 &menuItems[40],
 									 &menuItems[2]
 									},
 									{
@@ -407,7 +409,7 @@ const menuItem_t menuItems[] 	= {
 									},
 									{
 									 //  This is element number (37) calling -> 37
-	 	 	 	 	 	 	 	 	 "Read Voltage ..",
+	 	 	 	 	 	 	 	 	 "Voltage Monitor ..",
 									 &stubCall,
 									 &menuItems[0],
 									 &menuItems[38],
@@ -415,30 +417,39 @@ const menuItem_t menuItems[] 	= {
 									 &menuItems[37]
 									},
 									{
-									 //  This is element number (38) calling -> 38
-	 	 	 	 	 	 	 	 	 "Read Current ..",
+									 //  This is element number (38) calling -> 39
+	 	 	 	 	 	 	 	 	 "Current Monitor ..",
 									 &callBack38,
 									 &menuItems[0],
-									 &menuItems[39],
+									 &menuItems[40],
 									 &menuItems[37],
-									 &menuItems[38]
+									 &menuItems[39]
 									},
 									{
-									 //  This is element number (39) calling -> 40
-	 	 	 	 	 	 	 	 	 "Elevator ..",
+									 //  This is element number (39) calling -> 39
+	 	 	 	 	 	 	 	 	 "Read Current ..",
 									 &callBack39,
+									 &menuItems[38],
+									 &menuItems[39],
+									 &menuItems[39],
+									 &menuItems[39]
+									},
+									{
+									 //  This is element number (40) calling -> 41
+	 	 	 	 	 	 	 	 	 "Elevator ..",
+									 &callBack40,
 									 &menuItems[0],
 									 &menuItems[1],
 									 &menuItems[38],
-									 &menuItems[40]
+									 &menuItems[41]
 									},
 									{
-									 //  This is element number (40) calling -> 40
+									 //  This is element number (41) calling -> 41
 	 	 	 	 	 	 	 	 	 "To Be defined \nlater!",
 									 &stubCall,
-									 &menuItems[39],
 									 &menuItems[40],
-									 &menuItems[40],
-									 &menuItems[40]
+									 &menuItems[41],
+									 &menuItems[41],
+									 &menuItems[41]
 									}
 								  };

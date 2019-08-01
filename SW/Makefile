@@ -13,7 +13,7 @@ AVRDUDE_FLAGS := -p $(MCU) -c $(AVRDUDE_PROGRAMMER)
 SHELL = C:\cygwin64\bin\sh.exe
 #============== C files in thier respective Directories ========================
 SRCS = 	main/main.c \
-		LCD/lcd1602A.c \
+		LCD/LCD_1602A.c \
 		Buttons/Buttons.c\
 		Menu/Menu.c\
 		ADC/ADC.c\

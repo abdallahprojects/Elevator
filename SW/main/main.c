@@ -8,7 +8,7 @@
 #include <avr/io.h>
 #include <util/delay.h>
 #include <stdint.h>
-#include "lcd1602A.h"
+#include "LCD_1602A.h"
 #include "common.h"
 #include "motor.h"
 #include "Buttons.h"
@@ -17,7 +17,7 @@
 #include "ADC.h"
 int main(void){
 	state_t state = Init;
-	LCD board1_lcd = {(&PORTC),6,4,5,3,2,1,0};
+	//LCD board1_lcd = {(&PORTC),6,4,5,3,2,1,0};
 	uint8_t buttonState[b_max]={0,0,0,0};
 	buttonType_t button;
 
@@ -33,11 +33,11 @@ while(true){
 		// initialization sequence
 		BUT_init(); // init buttons
 		ADC_init(); // init the current sensor ADC channel
-		LCD_Init(board1_lcd);
-		_delay_ms(80);
+		LCD_Init();
 		/* initializing the motor */
 		InitMotor;
-		LCD_puts("Elevator Project!");
+		LCD_putrs("Elevator Project!");
+		_delay_ms(500);
 		state = mainMenu;
 		break;
 

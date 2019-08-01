@@ -30,7 +30,9 @@ void callBack5(uint8_t init){
 // The following callback is for ("Digital Motor\nControl ..") menu item 
 void callBack8(uint8_t init){
 // ---------- Manual Code Start --------------------
-
+	if(init){
+		MotorDisable;
+	}
 // ---------- Manual Code End   --------------------
 
 }
@@ -41,6 +43,7 @@ void callBack9(uint8_t init){
 	uint32_t ADCValue,tmp;
 	if(init == true)
 	{
+		MotorEnable;
 		MotorOnLeft;
 	}else{
 		tmp = 0;
@@ -340,12 +343,21 @@ void callBack36(uint8_t init){
 // ---------- Manual Code End   --------------------
 
 }
-// The following callback is for ("Read Current ..") menu item 
+// The following callback is for ("Current Monitor ..") menu item 
 void callBack38(uint8_t init){
+// ---------- Manual Code Start --------------------
+	if(init){
+		MotorDisable;
+	}
+// ---------- Manual Code End   --------------------
+
+}
+// The following callback is for ("Read Current ..") menu item 
+void callBack39(uint8_t init){
 // ---------- Manual Code Start --------------------
 	uint8_t i;
 	uint32_t sum = 0;
-	uint32_t tmp[20];
+	uint32_t tmp[50];
 	uint32_t mean_by_5;
 	//uint32_t volt_10th_ACS;
 	static uint8_t counter;
@@ -353,22 +365,23 @@ void callBack38(uint8_t init){
 	//LCD_Clear();
 	if(init)
 	{
+		MotorEnable;
 		MotorOnLeft;
 		LCD_Clear();
 		LCD_putrs("Current Monitor");
-		_delay_ms(2000);
+		_delay_ms(200);
 		counter = 0;
 	}
-	for(i=0;i<20;i++){
+	for(i=0;i<50;i++){
 		tmp[i] = (uint32_t)ADC_read(3);
 	}
-	for(i=0;i<20;i++){
+	for(i=0;i<50;i++){
 		sum+= tmp[i];
 	}
-	mean_by_5 = (sum/20);
+	mean_by_5 = (sum/50);
 	//mean_by_5 = 103;
 	//volt_10th_ACS  = ((mean_by_5*500)/1024);
-	if(mean_by_5 > 518)
+	if(mean_by_5 > 520)
 	{
 		MotorOff;
 		LCD_Seond_Line();
@@ -394,7 +407,7 @@ void callBack38(uint8_t init){
 
 }
 // The following callback is for ("Elevator ..") menu item 
-void callBack39(uint8_t init){
+void callBack40(uint8_t init){
 // ---------- Manual Code Start --------------------
 
 // ---------- Manual Code End   --------------------

@@ -11,7 +11,7 @@
 #include "Buttons.h"
 #include "Menu.h"
 #include "motor.h"
-#include "lcd1602A.h"
+#include "LCD_1602A.h"
 #include "ADC.h"
 #include "GenMenu.h"  // generated list of the menu, do not modify manually
 #include "PWM.h"
@@ -58,11 +58,5 @@ void processMenu(void){
 #include "GenMenu.c"
 
 void stubCall(uint8_t init){
-	if(init == true){
-		LCD_Clear();
-		LCD_putrs("Press back\n to return!!");
-		_delay_ms(2000);
-		LCD_Clear();
-		LCD_putrs(currentMenuItem->string);
-	}
+// nothing to be done for now, later to be implemented
 }
