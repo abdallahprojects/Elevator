@@ -153,8 +153,28 @@ void callBack14(uint8_t init){
 // The following callback is for ("Left ..\n++++++++++") menu item 
 void callBack15(uint8_t init){
 // ---------- Manual Code Start --------------------
+	static uint8_t skip;
+	uint16_t mA = 0;
+	uint8_t mA10th = 0;
 	if(init){
 		PWM_leftSetDutyCycle(100);
+	}else{
+		if(skip > 200){
+			LCD_GotoXY(8,0); // set position for new ADC value
+			LCD_putrs("Amp=");
+			LCD_GotoXY(12,0);
+			GetCurrValue(RES,MOTOR_CRNT_SENS_CHNL,&mA,&mA10th);
+			LCD_putNum(mA/1000);
+			LCD_putc('.');
+			LCD_putNum(mA%1000);
+			//LCD_putNum(mA10th);
+			LCD_GotoXY(15,0);
+			LCD_putrs("A");
+			skip = 0;
+		}else{
+			skip++;
+		}
+
 	}
 // ---------- Manual Code End   --------------------
 
@@ -162,8 +182,28 @@ void callBack15(uint8_t init){
 // The following callback is for ("Left ..\n+") menu item 
 void callBack16(uint8_t init){
 // ---------- Manual Code Start --------------------
+	static uint8_t skip;
+	uint16_t mA = 0;
+	uint8_t mA10th = 0;
 	if(init){
 		PWM_leftSetDutyCycle(10);
+	}else{
+		if(skip > 200){
+			LCD_GotoXY(8,0); // set position for new ADC value
+			LCD_putrs("Amp=");
+			LCD_GotoXY(12,0);
+			GetCurrValue(RES,MOTOR_CRNT_SENS_CHNL,&mA,&mA10th);
+			LCD_putNum(mA/1000);
+			LCD_putc('.');
+			LCD_putNum(mA%1000);
+			//LCD_putNum(mA10th);
+			LCD_GotoXY(15,0);
+			LCD_putrs("A");
+			skip = 0;
+		}else{
+			skip++;
+		}
+
 	}
 // ---------- Manual Code End   --------------------
 
@@ -171,8 +211,28 @@ void callBack16(uint8_t init){
 // The following callback is for ("Left ..\n++") menu item 
 void callBack17(uint8_t init){
 // ---------- Manual Code Start --------------------
+	static uint8_t skip;
+	uint16_t mA = 0;
+	uint8_t mA10th = 0;
 	if(init){
 		PWM_leftSetDutyCycle(20);
+	}else{
+		if(skip > 200){
+			LCD_GotoXY(8,0); // set position for new ADC value
+			LCD_putrs("Amp=");
+			LCD_GotoXY(12,0);
+			GetCurrValue(RES,MOTOR_CRNT_SENS_CHNL,&mA,&mA10th);
+			LCD_putNum(mA/1000);
+			LCD_putc('.');
+			LCD_putNum(mA%1000);
+			//LCD_putNum(mA10th);
+			LCD_GotoXY(15,0);
+			LCD_putrs("A");
+			skip = 0;
+		}else{
+			skip++;
+		}
+
 	}
 // ---------- Manual Code End   --------------------
 
@@ -180,8 +240,28 @@ void callBack17(uint8_t init){
 // The following callback is for ("Left ..\n+++") menu item 
 void callBack18(uint8_t init){
 // ---------- Manual Code Start --------------------
+	static uint8_t skip;
+	uint16_t mA = 0;
+	uint8_t mA10th = 0;
 	if(init){
 		PWM_leftSetDutyCycle(30);
+	}else{
+		if(skip > 200){
+			LCD_GotoXY(8,0); // set position for new ADC value
+			LCD_putrs("Amp=");
+			LCD_GotoXY(12,0);
+			GetCurrValue(RES,MOTOR_CRNT_SENS_CHNL,&mA,&mA10th);
+			LCD_putNum(mA/1000);
+			LCD_putc('.');
+			LCD_putNum(mA%1000);
+			//LCD_putNum(mA10th);
+			LCD_GotoXY(15,0);
+			LCD_putrs("A");
+			skip = 0;
+		}else{
+			skip++;
+		}
+
 	}
 // ---------- Manual Code End   --------------------
 
@@ -189,8 +269,28 @@ void callBack18(uint8_t init){
 // The following callback is for ("Left ..\n++++") menu item 
 void callBack19(uint8_t init){
 // ---------- Manual Code Start --------------------
+	static uint8_t skip;
+	uint16_t mA = 0;
+	uint8_t mA10th = 0;
 	if(init){
 		PWM_leftSetDutyCycle(40);
+	}else{
+		if(skip > 200){
+			LCD_GotoXY(8,0); // set position for new ADC value
+			LCD_putrs("Amp=");
+			LCD_GotoXY(12,0);
+			GetCurrValue(RES,MOTOR_CRNT_SENS_CHNL,&mA,&mA10th);
+			LCD_putNum(mA/1000);
+			LCD_putc('.');
+			LCD_putNum(mA%1000);
+			//LCD_putNum(mA10th);
+			LCD_GotoXY(15,0);
+			LCD_putrs("A");
+			skip = 0;
+		}else{
+			skip++;
+		}
+
 	}
 // ---------- Manual Code End   --------------------
 
@@ -198,8 +298,28 @@ void callBack19(uint8_t init){
 // The following callback is for ("Left ..\n+++++") menu item 
 void callBack20(uint8_t init){
 // ---------- Manual Code Start --------------------
+	static uint8_t skip;
+	uint16_t mA = 0;
+	uint8_t mA10th = 0;
 	if(init){
 		PWM_leftSetDutyCycle(50);
+	}else{
+		if(skip > 200){
+			LCD_GotoXY(8,0); // set position for new ADC value
+			LCD_putrs("Amp=");
+			LCD_GotoXY(12,0);
+			GetCurrValue(RES,MOTOR_CRNT_SENS_CHNL,&mA,&mA10th);
+			LCD_putNum(mA/1000);
+			LCD_putc('.');
+			LCD_putNum(mA%1000);
+			//LCD_putNum(mA10th);
+			LCD_GotoXY(15,0);
+			LCD_putrs("A");
+			skip = 0;
+		}else{
+			skip++;
+		}
+
 	}
 // ---------- Manual Code End   --------------------
 
@@ -207,8 +327,28 @@ void callBack20(uint8_t init){
 // The following callback is for ("Left ..\n++++++") menu item 
 void callBack21(uint8_t init){
 // ---------- Manual Code Start --------------------
+	static uint8_t skip;
+	uint16_t mA = 0;
+	uint8_t mA10th = 0;
 	if(init){
 		PWM_leftSetDutyCycle(60);
+	}else{
+		if(skip > 200){
+			LCD_GotoXY(8,0); // set position for new ADC value
+			LCD_putrs("Amp=");
+			LCD_GotoXY(12,0);
+			GetCurrValue(RES,MOTOR_CRNT_SENS_CHNL,&mA,&mA10th);
+			LCD_putNum(mA/1000);
+			LCD_putc('.');
+			LCD_putNum(mA%1000);
+			//LCD_putNum(mA10th);
+			LCD_GotoXY(15,0);
+			LCD_putrs("A");
+			skip = 0;
+		}else{
+			skip++;
+		}
+
 	}
 // ---------- Manual Code End   --------------------
 
@@ -216,8 +356,28 @@ void callBack21(uint8_t init){
 // The following callback is for ("Left ..\n+++++++") menu item 
 void callBack22(uint8_t init){
 // ---------- Manual Code Start --------------------
+	static uint8_t skip;
+	uint16_t mA = 0;
+	uint8_t mA10th = 0;
 	if(init){
 		PWM_leftSetDutyCycle(70);
+	}else{
+		if(skip > 200){
+			LCD_GotoXY(8,0); // set position for new ADC value
+			LCD_putrs("Amp=");
+			LCD_GotoXY(12,0);
+			GetCurrValue(RES,MOTOR_CRNT_SENS_CHNL,&mA,&mA10th);
+			LCD_putNum(mA/1000);
+			LCD_putc('.');
+			LCD_putNum(mA%1000);
+			//LCD_putNum(mA10th);
+			LCD_GotoXY(15,0);
+			LCD_putrs("A");
+			skip = 0;
+		}else{
+			skip++;
+		}
+
 	}
 // ---------- Manual Code End   --------------------
 
@@ -225,8 +385,28 @@ void callBack22(uint8_t init){
 // The following callback is for ("Left ..\n++++++++") menu item 
 void callBack23(uint8_t init){
 // ---------- Manual Code Start --------------------
+	static uint8_t skip;
+	uint16_t mA = 0;
+	uint8_t mA10th = 0;
 	if(init){
 		PWM_leftSetDutyCycle(80);
+	}else{
+		if(skip > 200){
+			LCD_GotoXY(8,0); // set position for new ADC value
+			LCD_putrs("Amp=");
+			LCD_GotoXY(12,0);
+			GetCurrValue(RES,MOTOR_CRNT_SENS_CHNL,&mA,&mA10th);
+			LCD_putNum(mA/1000);
+			LCD_putc('.');
+			LCD_putNum(mA%1000);
+			//LCD_putNum(mA10th);
+			LCD_GotoXY(15,0);
+			LCD_putrs("A");
+			skip = 0;
+		}else{
+			skip++;
+		}
+
 	}
 // ---------- Manual Code End   --------------------
 
@@ -234,8 +414,28 @@ void callBack23(uint8_t init){
 // The following callback is for ("Left ..\n+++++++++") menu item 
 void callBack24(uint8_t init){
 // ---------- Manual Code Start --------------------
+	static uint8_t skip;
+	uint16_t mA = 0;
+	uint8_t mA10th = 0;
 	if(init){
 		PWM_leftSetDutyCycle(90);
+	}else{
+		if(skip > 200){
+			LCD_GotoXY(8,0); // set position for new ADC value
+			LCD_putrs("Amp=");
+			LCD_GotoXY(12,0);
+			GetCurrValue(RES,MOTOR_CRNT_SENS_CHNL,&mA,&mA10th);
+			LCD_putNum(mA/1000);
+			LCD_putc('.');
+			LCD_putNum(mA%1000);
+			//LCD_putNum(mA10th);
+			LCD_GotoXY(15,0);
+			LCD_putrs("A");
+			skip = 0;
+		}else{
+			skip++;
+		}
+
 	}
 // ---------- Manual Code End   --------------------
 

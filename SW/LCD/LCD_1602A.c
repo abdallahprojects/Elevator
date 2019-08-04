@@ -221,3 +221,13 @@ void SendLCD_CGRAM_ADD(uint8_t Address){
 	command = code | Address;
 	WRINS_CHK(command);
 }
+// column (0 till 16)
+//line: line number    (0 for first line, 1 for second line)
+void LCD_GotoXY(uint8_t column,uint8_t line){
+	uint8_t position = 0x00;
+	position |= ((0x01&line)<<LINE_BIT_POS);
+	if(column < 16){
+		position+= column;
+	}
+	LCD_Cmd((position|ADD_COMMAND));
+}

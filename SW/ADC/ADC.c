@@ -7,6 +7,7 @@
 
 #include <avr/io.h>
 #include <stdint.h>
+#include "common.h"
 #include "ADC.h"
 
 void ADC_init(void){
@@ -38,4 +39,38 @@ int ADC_read(char channel){
 					Multiply with weight */
 	Ain = Ain + AinLow;
 	return(Ain);			/* Return digital value*/
+}
+uint32_t ADC_AVG(uint8_t steps,uint8_t chnl){
+	uint8_t i;
+	uint32_t ADCValue,tmp;
+		tmp = 0;
+		for(i=0;i<steps;i++)
+		{
+			tmp += ADC_read(chnl);
+		}
+		ADCValue = tmp/steps;
+		return ADCValue;
+}
+/*
+ * This function will return the amount of consumed current in milliAmps for example:
+ * if the consumed current 131.5 milliAmps, CVmA will be 131 and CVmA10th will be 5 respectively.
+ * if the return value is false, the current direction is positive,
+ * if true the cuurent direction is negative
+ */
+bool_t GetCurrValue(uint8_t steps,uint8_t chnl,uint16_t * CVmA,uint8_t *CVmA10th){
+	bool_t CurrentDirection = 0;
+	uint32_t ADCValue;
+	uint16_t ADCCurrent;
+	uint32_t CurrentValueMilAmp;
+	uint32_t CurrentValue10thMilAmp;
+
+		ADCValue =ADC_AVG(steps,chnl);
+		ADCCurrent = (ADCValue <512)?(512-ADCValue):(ADCValue-512);
+		CurrentValueMilAmp = 26*ADCCurrent;
+		CurrentValue10thMilAmp = 3*ADCCurrent;
+		CurrentValueMilAmp += CurrentValue10thMilAmp/10;
+		CurrentValue10thMilAmp %= 10;
+		*CVmA = CurrentValueMilAmp;
+		*CVmA10th = CurrentValue10thMilAmp;
+		return CurrentDirection;
 }

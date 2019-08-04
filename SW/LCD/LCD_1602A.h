@@ -21,7 +21,9 @@
 #define LCD_EN		PC4
 #define LCD_RW		PC5
 #define LCD_RS		PC6
-
+/// internal defines
+#define LINE_BIT_POS 6
+#define ADD_COMMAND 0b10000000
 //	LCD_Wait_For_Busy();
 #define WRINS_CHK(c)				\
 do {								\
@@ -78,4 +80,5 @@ void LCD_putNum(uint32_t number);
 void LCD_putrs ( const char *a );
 void SendLCD_CGRAM_ADD(uint8_t Address);
 void SendLCD_DDRAM_ADD(uint8_t Address);
+void LCD_GotoXY(uint8_t column,uint8_t line);
 #endif /* LCD2_LCD_1602A_H_ */
